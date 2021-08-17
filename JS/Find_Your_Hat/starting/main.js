@@ -51,7 +51,7 @@ class Field {
     }
 
     checkWin() {
-        if (this.field[this.positionY] == undefined || this.field[this.positionX] == undefined) {
+        if (this.field[this.positionY] == undefined) {
             console.log('You are out of boundary.')
             return playing = false;
         }
@@ -67,6 +67,10 @@ class Field {
             case fieldCharacter:
                 console.log('Keep looking for the hat...');
                 this.field[this.positionY][this.positionX] = pathCharacter;
+                break;
+            case undefined:
+                console.log('You are out of boundary.')
+                playing = false;
                 break;
         }
     }
@@ -114,7 +118,7 @@ class Field {
 
 }
 
-const myField = new Field(Field.generateField(10,10,20));
+const myField = new Field(Field.generateField(20, 10, 10));
 
 function game() {
     while(playing) {
