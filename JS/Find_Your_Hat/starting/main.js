@@ -77,7 +77,6 @@ class Field {
     
     static generateField(height, width, percentage) {
 
-        //Helper function to return hole or fieldCharacter depening on percentage.
         const fieldOrHole = (percentage) => {
             if (percentage >= 0 && percentage <= 100) {
               const ranNum = Math.random() * 100;
@@ -91,7 +90,6 @@ class Field {
             }
         }
 
-        ////Helper function to return a plain field with no hat and pathCharacter
         const plainField = () => {
             function makeWidthArray() {
                 let widthArray = [];
@@ -109,12 +107,10 @@ class Field {
 
         const gameReadyField = plainField();
 
-        //Adding hat on gameReadyField, while loop will check if hat sits on * and will reposition if so
         do {
             gameReadyField[Math.floor(Math.random() * height)][Math.floor(Math.random() * width)] = hat;
         }   while (gameReadyField[0][0] == hat);
         
-        //Adding pathCharacter to left-upper corner
         gameReadyField[0][0] = pathCharacter;
 
         return gameReadyField;
