@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TrackList.css';
 import Track from '../Track/Track';
 
-export default function TrackList() {
+export default function TrackList({trackList}) {
     return (
         <div className="TrackList">
-            {/* You will add a map method that renders a set of Track components  */}
+            {trackList && trackList.map((track) => {
+                return <Track 
+                        trackName={track.trackName}
+                        artist={track.artist}
+                        album={track.album}/>
+            })}
         </div>
     )
 }

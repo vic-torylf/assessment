@@ -118,7 +118,7 @@ class Field {
 
 }
 
-const myField = new Field(Field.generateField(20, 10, 10));
+const myField = new Field(Field.generateField(5, 20, 10));
 
 function game() {
     while(playing) {
