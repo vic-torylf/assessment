@@ -5,13 +5,6 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 
 export default function App() {
-    const [selectedResults, setSelectedResults] = useState([
-        {
-            trackName: 'hihi',
-            artist: 'me',
-            album: 'album3'
-        }
-    ])
     const [tracks, setTracks] = useState([
         {
             trackName: 'hi',
@@ -25,6 +18,21 @@ export default function App() {
         }
     ]);
 
+    const [playlistName, setPlaylistName] = useState('My Playlist');
+
+    const [playlistTracks, setPlaylistTracks] = useState([
+        {
+            trackName: 'hihi',
+            artist: 'me',
+            album: 'second album'
+        }
+    ]);
+    
+    const addTrack = (track) => {
+        console.log(track)
+        setPlaylistTracks(prev => [track, ...prev])
+    }
+
     return (
         <div>
             <div>
@@ -32,8 +40,13 @@ export default function App() {
                 <div className="App">
                     <SearchBar setTracks={setTracks}/>
                     <div className="App-playlist">
-                        <SearchResults results={tracks}/>
-                        <Playlist selectedResults={selectedResults}/>
+                        <SearchResults 
+                        results={tracks}
+                        onAdd={addTrack}/>
+                        <Playlist 
+                        playlistTracks={playlistTracks}
+                        playlistName={playlistName}
+                        />
                     </div>
                 </div>
             </div>
