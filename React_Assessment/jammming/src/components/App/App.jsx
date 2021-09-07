@@ -18,7 +18,7 @@ export default function App() {
         }
     ]);
 
-    const [playlistName, setPlaylistName] = useState('My Playlist');
+    const [playlistName, setPlaylistName] = useState("My Playlist");
 
     const [playlistTracks, setPlaylistTracks] = useState([
         {
@@ -36,6 +36,10 @@ export default function App() {
         setPlaylistTracks(prev => prev.filter(playlistTracks => track !== playlistTracks))
     }
 
+    const updatePlaylistName = (name) => {
+        setPlaylistName(name);
+    }
+
     return (
         <div>
             <div>
@@ -50,6 +54,7 @@ export default function App() {
                         playlistTracks={playlistTracks}
                         playlistName={playlistName}
                         onRemove={removeTrack}
+                        onNameChange={updatePlaylistName}
                         />
                     </div>
                 </div>
