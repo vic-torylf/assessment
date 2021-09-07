@@ -29,8 +29,11 @@ export default function App() {
     ]);
     
     const addTrack = (track) => {
-        console.log(track)
         setPlaylistTracks(prev => [track, ...prev])
+    }
+
+    const removeTrack = (track) => {
+        setPlaylistTracks(prev => prev.filter(playlistTracks => track !== playlistTracks))
     }
 
     return (
@@ -46,6 +49,7 @@ export default function App() {
                         <Playlist 
                         playlistTracks={playlistTracks}
                         playlistName={playlistName}
+                        onRemove={removeTrack}
                         />
                     </div>
                 </div>

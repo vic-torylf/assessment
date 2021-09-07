@@ -1,14 +1,18 @@
 import React from 'react';
 import './Track.css';
 
-export default function Track({trackName, artist, album, isRemoval, onAdd, track}) {
+export default function Track({trackName, artist, album, isRemoval, onAdd, track, onRemove}) {
     const addTrack = () => {
         onAdd(track);
     }
 
+    const removeTrack = () => {
+        onRemove(track);
+    }
+
     const renderAction = () => {
         if (isRemoval === true) {
-            return <button className="Track-action">-</button>
+            return <button className="Track-action" onClick={removeTrack}>-</button>
         } else {
             return <button className="Track-action" onClick={addTrack}>+</button>
         }
